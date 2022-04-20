@@ -5,13 +5,13 @@ with project_task_metrics as (
 ),
 
 project as (
-    
+
     select *
     from {{ var('project') }}
 ),
 
 project_user as (
-    
+
     select *
     from {{ ref('int_asana__project_user') }}
 ),
@@ -39,7 +39,7 @@ agg_sections as (
 
 agg_project_users as (
 
-    select 
+    select
         project_user.project_id,
         {{ fivetran_utils.string_agg( "asana_user.user_name || ' as ' || project_user.role" , "', '" ) }} as users
 
@@ -51,9 +51,9 @@ agg_project_users as (
 
 -- need to split from above due to redshift's inability to string/list_agg and use distinct aggregates
 count_project_users as (
- 
-    select 
-        project_id, 
+
+    select
+        project_id,
         count(distinct user_id) as number_of_users_involved
 
     from project_user
@@ -65,6 +65,7 @@ project_join as (
 
     select
         project.project_id,
+        project.custom_vw_plan_it,
         project_name,
 
         coalesce(project_task_metrics.number_of_open_tasks, 0) as number_of_open_tasks,
@@ -90,9 +91,9 @@ project_join as (
         project.is_public
 
     from
-    project 
-    left join project_task_metrics on project.project_id = project_task_metrics.project_id 
-    left join agg_project_users on project.project_id = agg_project_users.project_id  
+    project
+    left join project_task_metrics on project.project_id = project_task_metrics.project_id
+    left join agg_project_users on project.project_id = agg_project_users.project_id
     left join count_project_users on project.project_id = count_project_users.project_id
     join team on team.team_id = project.team_id -- every project needs a team
     left join agg_sections on project.project_id = agg_sections.project_id
