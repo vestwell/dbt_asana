@@ -85,7 +85,7 @@ task_join as (
         task_tags.tags,
         coalesce(task_tags.number_of_tags, 0) as number_of_tags,
 
-        projects_tasks.project_id,
+        project_tasks.project_id,
         task_projects.projects_sections,
 
         subtask_parent.subtask_id is not null as is_subtask, -- parent id is in task.*
