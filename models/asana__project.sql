@@ -65,7 +65,7 @@ project_join as (
 
     select
         project.project_id,
-        project.custom_vw_plan_it,
+        project.custom_vw_plan_id,
         project_name,
 
         coalesce(project_task_metrics.number_of_open_tasks, 0) as number_of_open_tasks,
