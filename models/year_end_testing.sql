@@ -38,7 +38,7 @@ select
   due_date,
   first_modifier_name,
   modified_at,
-  custom_task_mins,
+  custom_task_mins as task_mins,
   task_link,
   days_open,
   is_currently_assigned,
