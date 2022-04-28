@@ -1,7 +1,7 @@
 select
     TASK_ID,
     TASK_NAME,
-    regexp_substr(task_name, '[-+]?[0-9]*\.?[0-9]+') as task_name,
+    regexp_substr(task_name, '[-+]?[0-9]*\.?[0-9]+') as task_number,
     CONVERSATION,
     TAGS,
     TASK_DESCRIPTION,
