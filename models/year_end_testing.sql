@@ -1,8 +1,3 @@
-{{ config(
-    materialized = 'table',
-    schema = 'composite'
-)}}
-
 select
     TASK_ID,
     TASK_NAME,
