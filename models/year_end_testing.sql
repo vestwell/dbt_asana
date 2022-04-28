@@ -25,6 +25,7 @@ select
   custom_th_next_year as th_next_year,
   custom_funding_deadline_2022_mm_dd_ as funding_deadline_2022_mm_dd_,
   conversation,
+  number_of_comments,
   tags,
   task_description,
   assignee_user_id,
@@ -45,8 +46,7 @@ select
   days_since_last_assignment,
   days_since_first_assignment,
   last_assigned_at,
-  first_assigned_at,
-  number_of_comments
+  first_assigned_at
 from {{ ref('asana__task') }}
 
 --the below script allows for passing project_id's to filter the query.
