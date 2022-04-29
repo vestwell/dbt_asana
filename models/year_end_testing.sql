@@ -1,7 +1,7 @@
 select
   task_id,
   task_name,
-  regexp_substr(task_name,'^[0-9\t.\u02dc\u00a0]+') as task_number,
+  regexp_substr(task_name,'[-+]?[0-9]*\.?[0-9]+') as task_number,
   custom_vw_plan_id as vw_plan_id,
   custom_enterprise as enterprise,
   custom_sh_type as sh_type,
