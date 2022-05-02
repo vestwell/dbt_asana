@@ -1,14 +1,12 @@
-Pull Request
-**Are you a current Fivetran customer?** 
-<!--- Please tell us your name, title and company -->
+<!---
+Provide a short summary in the Title above. Examples of good PR titles:
+* "Feature: add so-and-so models"
+* "Fix: deduplicate such-and-such"
+* "Update: dbt version 0.13.0"
+-->
 
 **What change(s) does this PR introduce?** 
 <!--- Describe what changes your PR introduces to the package and how to leverage this new feature. -->
-
-**Did you update the CHANGELOG?** 
-<!--- Please update the new package version’s CHANGELOG entry detailing the changes included in this PR. -->
-<!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
-- [ ] Yes
 
 **Does this PR introduce a breaking change?**
 <!--- Does this PR introduce changes that will cause current package users' jobs to fail or require a `--full-refresh`? -->
@@ -16,38 +14,38 @@ Pull Request
 - [ ] Yes (please provide breaking change details below.)
 - [ ] No  (please provide an explanation as to how the change is non-breaking below.)
 
-**Did you update the dbt_project.yml files with the version upgrade (please leverage standard semantic versioning)? (In both your main project and integration_tests)** 
-<!--- The dbt_project.yml and the integration_tests/dbt_project.yml files contain the version number. Be sure to upgrade it accordingly -->
-<!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
-- [ ] Yes
+## To-do before merge
+<!---
+(Optional -- remove this section if not needed)
+Include any notes about things that need to happen before this PR is merged, e.g.:
+- [ ] Change the base branch
+- [ ] Update dbt Cloud jobs
+- [ ] Ensure PR #56 is merged
+-->
 
-**Is this PR in response to a previously created Bug or Feature Request**
-<!--- If an Issue was created it is helpful to track the progress by linking it in the PR. -->
-<!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
-- [ ] Yes, Issue/Feature [link bug/feature number here]
-- [ ] No 
+## Screenshots:
+<!---
+Include a screenshot of the relevant section of the updated DAG. You can access
+your version of the DAG by running `dbt docs generate && dbt docs serve`.
+-->
 
-**How did you test the PR changes?** 
-<!--- Proof of testing is required in order for the PR to be approved. -->
-<!--- To check a box, remove the space and insert an x in the box (eg. [x] CircleCi). --> 
-<!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
-- [ ] CircleCi <!--- CircleCi testing is only applicable to Fivetran employees. --> 
-- [ ] Local (please provide additional testing details below)
-
-**Select which warehouse(s) were used to test the PR**
-<!--- To check a warehouse remove the space and insert an x in the box (eg. [x] Bigquery). --> 
-<!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
-- [ ] BigQuery
-- [ ] Redshift
-- [ ] Snowflake
-- [ ] Postgres
-- [ ] Databricks
-- [ ] Other (provide details below)
+## Checklist:
+<!---
+This checklist is mostly useful as a reminder of small things that can easily be
+forgotten – it is meant as a helpful tool rather than hoops to jump through.
+Put an `x` in all the items that apply, make notes next to any that haven't been
+addressed, and remove any items that are not relevant to this PR.
+-->
+- [ ] My pull request represents one logical piece of work.
+- [ ] My commits are related to the pull request and look clean.
+- [ ] My SQL follows the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md).
+- [ ] I have materialized my models appropriately.
+- [ ] I have added appropriate tests and documentation to any new models.
 
 **Provide an emoji that best describes your current mood**
 <!--- For a complete list of markdown compatible emojis check our this git repo (https://gist.github.com/rxaviers/7360908)  --> 
 :dancer:
 
-**Feedback**
-
-We are so excited you decided to contribute to the Fivetran community dbt package! We continue to work to improve the packages and would greatly appreciate your [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next.
+Notify (remove if unnecessary):
+@robert1er
+@frankj09
