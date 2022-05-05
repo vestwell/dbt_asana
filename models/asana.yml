@@ -410,6 +410,9 @@ models:
       - name: FUNDING_DEADLINE_2022_MM_DD_
         description: From Questionnaire response - sponsor tax filing deadline.
 
+      - name: ERROR_TYPES
+        description: Year End Testing QC Error types
+
       - name: conversation
         description: The task's comments and authors aggregated into an ordered conversation, with authors + time sent
 
