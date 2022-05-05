@@ -24,6 +24,7 @@ select
   custom_d_3_discrepancies as d_3_discrepancies,
   custom_th_next_year as th_next_year,
   custom_funding_deadline_2022_mm_dd_ as funding_deadline_2022_mm_dd_,
+  CUSTOM_ERROR_TYPE_S_ as error_types,
   conversation,
   number_of_comments,
   tags,
