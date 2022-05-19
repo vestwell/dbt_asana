@@ -12,7 +12,7 @@ with milestones as(
         m3_inv.completed_at m3_investments,
         m3_is_elig.completed_at m3_is_final_elige_review,
         m3_rm_elig.completed_at m3_rm_eligibility_review,
-        m3_rm_rem.completed_at m3_remainder,
+        m3_rm_rem.completed_at m3_reminder,
         m4.due_on m4_due,
         m4.completed_at m4_done,
         m4_send_data.completed_at m4_sent,
@@ -282,7 +282,7 @@ select
     milestones.m3_investments,
     milestones.m3_rm_eligibility_review,
     milestones.m3_is_final_elige_review,
-    milestones.m3_remainder,
+    milestones.m3_reminder,
     milestones.m3_due,
 
     --
