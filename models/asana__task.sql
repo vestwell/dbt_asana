@@ -109,7 +109,7 @@ task_join as (
     left join subtask_parent on task.task_id = subtask_parent.subtask_id
 
     left join task_projects on task.task_id = task_projects.task_id
-    left join project_tasks on project_tasks.task_id = task.task_id
+    left join project_tasks on project_tasks.task_id = coalesce(task.parent_task_id, task.task_id)
 
 )
 
