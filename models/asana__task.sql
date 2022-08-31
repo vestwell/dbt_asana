@@ -1,6 +1,12 @@
 with task as (
-    select *
-    from {{ var('task') }}
+    select task.*,
+    coalesce(parent4.parent_task_id, parent3.parent_task_id, parent2.parent_task_id, parent.parent_task_id, task.parent_task_id) as master_parent_id
+
+    from {{ var('task') }} task
+    left join {{ ref('stg_asana__task') }} parent on parent.task_id = task.parent_task_id
+    left join {{ ref('stg_asana__task') }} parent2 on parent2.task_id = parent.parent_task_id
+    left join {{ ref('stg_asana__task') }} parent3 on parent3.task_id = parent2.parent_task_id
+    left join {{ ref('stg_asana__task') }} parent4 on parent4.task_id = parent3.parent_task_id
 ),
 
 task_comments as (
@@ -109,7 +115,7 @@ task_join as (
     left join subtask_parent on task.task_id = subtask_parent.subtask_id
 
     left join task_projects on task.task_id = task_projects.task_id
-    left join project_tasks on project_tasks.task_id = task.task_id
+    left join project_tasks on project_tasks.task_id = coalesce(task.master_parent_id, task.task_id)
 
 )
 
