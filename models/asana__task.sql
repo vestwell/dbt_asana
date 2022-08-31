@@ -65,10 +65,20 @@ task_first_modifier as (
     from {{ ref('int_asana__task_first_modifier') }}
 ),
 
+users as (
+
+    select
+        user_id,
+        user_name
+
+    from {{ ref('stg_asana__user') }}
+),
+
 task_join as (
 
     select
         task.*,
+        users.user_name as completed_by_name,
         concat('https://app.asana.com/0/0/', task.task_id) as task_link,
         task_assignee.assignee_name,
         task_assignee.assignee_email,
@@ -116,6 +126,8 @@ task_join as (
 
     left join task_projects on task.task_id = task_projects.task_id
     left join project_tasks on project_tasks.task_id = coalesce(task.master_parent_id, task.task_id)
+
+    left join users on users.user_id = task.completed_by_user_id
 
 )
 
