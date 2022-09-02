@@ -65,7 +65,6 @@ project_join as (
 
     select
         project.project_id,
-        project.custom_vw_plan_id,
         project_name,
 
         coalesce(project_task_metrics.number_of_open_tasks, 0) as number_of_open_tasks,
@@ -88,7 +87,21 @@ project_join as (
         coalesce(count_project_users.number_of_users_involved, 0) as number_of_users_involved,
         agg_sections.sections,
         project.notes,
-        project.is_public
+        project.is_public,
+
+        --allows for pass through columns.
+        {{ dbt_utils.star(from=ref('stg_asana__project'), relation_alias = 'project', except = ['project_id',
+                                                                                                'is_archived',
+                                                                                                'created_at',
+                                                                                                'current_status',
+                                                                                                'modified_at',
+                                                                                                'due_date',
+                                                                                                'project_name',
+                                                                                                'owner_user_id',
+                                                                                                'is_public',
+                                                                                                'team_id',
+                                                                                                'workspace_id',
+                                                                                                'notes']) }}
 
     from
     project
